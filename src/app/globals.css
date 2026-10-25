@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { color-scheme: dark; }
+body { background: #0a0a0a; color: #fff; -webkit-tap-highlight-color: transparent; }
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(60rem 30rem at 85% 100%, rgba(215,255,0,.08), transparent 60%);
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand px-5 py-3 text-sm font-semibold text-black transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-ghost { @apply inline-flex items-center justify-center gap-2 rounded-full bg-neutral-800 px-5 py-3 text-sm font-semibold text-white transition hover:bg-neutral-700 disabled:opacity-50; }
+  .btn-danger { @apply inline-flex items-center justify-center gap-2 rounded-full bg-red-500/15 px-4 py-2 text-sm font-semibold text-red-400 transition hover:bg-red-500/25 disabled:opacity-50; }
+  .card { @apply rounded-2xl border border-white/5 bg-card; }
+  .input { @apply w-full rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-sm text-white placeholder-neutral-500 outline-none transition focus:border-brand/60; }
+  .label { @apply mb-1.5 block text-xs font-medium text-neutral-400; }
+  .chip { @apply inline-flex items-center gap-1 text-[11px] text-neutral-400; }
+}
+
+@media print {
+  body * { visibility: hidden; }
+  #invoice, #invoice * { visibility: visible; }
+  #invoice { position: absolute; left: 0; top: 0; width: 100%; background: #fff !important; color: #000 !important; border: none; }
+  #invoice * { color: #000 !important; border-color: #ddd !important; }
+}
